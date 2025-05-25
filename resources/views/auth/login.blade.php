@@ -146,10 +146,8 @@
 
         <div class="mt-4 text-center small">
             <a href="#">¿Se te ha olvidado la contraseña?</a><br>
-@guest
     <span class="text-white-50">¿No tienes cuenta?</span>
     <a href="{{ route('registro') }}">Suscríbete a Spotify</a>
-@endguest
 
         </div>
     </div>
