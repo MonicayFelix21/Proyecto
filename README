@@ -1,0 +1,20 @@
+# Proyecto Spotify Clone (Laravel)
+
+Este proyecto es una clonación inspirada en la página de inicio de Spotify. Incluye funcionalidades de autenticación, registro paso a paso, búsqueda de canciones, diseño moderno con Bootstrap y gestión de sesiones de usuario.
+
+##Tecnologías usadas
+
+- PHP 8.x
+- Laravel 10/12
+- MySQL
+- Bootstrap 5
+- Blade Templates
+- JavaScript (para sugerencias y eventos dinámicos)
+- Git + GitHub
+
+Restaurar Base de Datos
+Abre PhpMyAdmin
+Crea una base de datos con el nombre: mi_spotify
+Ve a la pestaña Importar
+Selecciona el archivo database/sql/spotify.sql
+Haz clic en Continuar
