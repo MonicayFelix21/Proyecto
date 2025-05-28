@@ -51,6 +51,29 @@
     align-items: center;
     gap: 4px;
 }
+.play-button {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background-color: #1ed760;
+    color: black;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.song-card:hover .play-button {
+    opacity: 1;
+    transform: translateY(0);
+}
 
     .buscador-wrapper {
         background-color: #2a2a2a;
@@ -208,16 +231,33 @@
             return;
         }
 
+
+
+
         fetch(`/buscar-canciones?q=${encodeURIComponent(q)}`)
             .then(res => res.json())
             .then(data => {
                 if (data.length > 0) {
                     sugerencias.style.display = 'block';
-                    sugerencias.innerHTML = data.map(c => `
-                        <div class="py-1 border-bottom">
-                            <strong>${c.titulo}</strong><br><small>${c.artista}</small>
-                        </div>
-                    `).join('');
+
+        sugerencias.addEventListener('click', function (e) {
+    const sugerencia = e.target.closest('.sugerencia');
+    if (!sugerencia) return;
+
+    const id = sugerencia.dataset.id;
+    sugerencias.style.display = 'none';
+    inputBusqueda.value = sugerencia.textContent.trim();
+
+    fetch(`/buscar-cancion?id=${id}`)
+        .then(res => res.json())
+        .then(cancion => mostrarCancionSeleccionada(cancion));
+});
+
+sugerencias.innerHTML = data.map(c => `
+    <div class="py-1 border-bottom sugerencia" data-id="${c.id}">
+        <strong>${c.titulo}</strong><br><small>${c.artista}</small>
+    </div>
+`).join('');
                 } else {
                     sugerencias.style.display = 'none';
                 }
@@ -252,6 +292,24 @@
         });
     }
 </script>
+<script>
+function mostrarCancionSeleccionada(cancion) {
+    const contenedor = document.querySelector('.row');
+    contenedor.innerHTML = `
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+            <div class="song-card">
+                <img src="/${cancion.imagen}" alt="Portada">
+                <h6>${cancion.titulo}</h6>
+                <div class="artist">
+                    ${cancion.explicito ? '<span class="badge bg-secondary px-2 py-1">E</span>' : ''}
+                    <span>${cancion.artista}</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+</script>
+
 <div class="banner-inferior fixed-bottom w-100 px-4 py-3 text-white d-flex justify-content-between align-items-center">
     <div>
         <strong>Muestra de Spotify</strong><br>
