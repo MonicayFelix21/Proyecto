@@ -7,194 +7,198 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-    <style>
-body {
-    background-color: #121212;
-    color: #fff;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1rem;
-}
+   <style>
+    body {
+        background-color: #121212;
+        color: #fff;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+    }
 
-.register-container {
-    width: 100%;
-    max-width: 480px;
-    padding: 2rem;
-    background-color: #121212;
-}
-        .spotify-logo {
-            display: block;
-            margin: 0 auto 1rem;
-            height: 40px;
-        }
+    .register-container {
+        width: 100%;
+        max-width: 480px;
+        padding: 2rem;
+        background-color: #121212;
+    }
 
-        h2 {
-            text-align: center;
-            font-weight: 700;
-            font-size: 24px;
-            margin-bottom: 1.5rem;
-        }
+    .spotify-logo {
+        display: block;
+        margin: 0 auto 1rem;
+        height: 40px;
+    }
 
-.form-control {
-    background-color: #121212;
-    color: white;
-    border: 1px solid #666;
-    border-radius: 6px;
-}
+    h2 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 24px;
+        margin-bottom: 1.5rem;
+    }
 
+    /* Estilo unificado para todos los campos */
+    input.form-control,
+    select.form-control {
+        background-color: #121212;
+        color: white;
+        border: 1px solid #666;
+        border-radius: 6px;
+        height: 45px;
+    }
 
-.form-control::placeholder {
-    color: #b3b3b3;
-}
+    input::placeholder {
+        color: #b3b3b3;
+    }
 
-.form-control:focus {
-    background-color: #121212;
-    color: white;
-    border-color: white; /* o #1db954 si quieres verde Spotify */
-    outline: none;
-    box-shadow: none;
-}
+    input.form-control:focus,
+    select.form-control:focus {
+        background-color: #121212;
+        color: white;
+        border-color: white;
+        outline: none;
+        box-shadow: none;
+    }
 
-        .btn-green {
-            background-color: #1db954;
-            color: black;
-            border-radius: 999px;
-            font-weight: bold;
-        }
+    .btn-green {
+        background-color: #1db954;
+        color: black;
+        border-radius: 999px;
+        font-weight: bold;
+    }
 
-        .btn-green:hover {
-            background-color: #1ed760;
-        }
+    .btn-green:hover {
+        background-color: #1ed760;
+    }
 
-        .small-link {
-            font-size: 0.9rem;
-            color: #1db954;
-        }
+    .small-link {
+        font-size: 0.9rem;
+        color: #1db954;
+    }
 
-        .hidden {
-            display: none;
-        }
+    .hidden {
+        display: none;
+    }
 
-        .input-password-wrapper {
-            position: relative;
-        }
+    /* Contraseña con ícono de mostrar/ocultar */
+    .input-password-wrapper {
+        position: relative;
+    }
 
-        .input-password-wrapper input {
-            width: 100%;
-            padding-right: 40px;
-            background-color: transparent;
-            border: 1px solid #b3b3b3;
-            color: white;
-            border-radius: 6px;
-            height: 45px;
-        }
+    .input-password-wrapper input {
+        width: 100%;
+        padding-right: 40px;
+        background-color: #121212;
+        border: 1px solid #b3b3b3;
+        color: white;
+        border-radius: 6px;
+        height: 45px;
+    }
 
-        .input-password-wrapper input:focus {
-            border-color: #1db954;
-            outline: none;
-            box-shadow: none;
-        }
+    .input-password-wrapper input:focus {
+        border-color: white;
+        outline: none;
+        box-shadow: none;
+    }
 
-        .toggle-password {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            color: #b3b3b3;
-            cursor: pointer;
-        }
+    .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: #b3b3b3;
+        cursor: pointer;
+    }
 
-        .requirement {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-            font-size: 0.95rem;
-        }
+    .requirement {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+    }
 
-        .requirement.neutral {
-            color: white;
-        }
+    .requirement.neutral {
+        color: white;
+    }
 
-        .requirement.valid {
-            color: #1ed760;
-        }
+    .requirement.valid {
+        color: #1ed760;
+    }
 
-        .requirement.invalid {
-            color: #e91429;
-        }
+    .requirement.invalid {
+        color: #e91429;
+    }
 
-        
+    /* Eliminar flechas de input number */
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
-        /* Chrome, Safari, Edge, Opera */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
 
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-}
-.radio-custom {
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    margin: 0.5rem 1rem 0.5rem 0;
-    font-weight: 500;
-    color: white;
-    position: relative;
-    padding-left: 28px;
-    user-select: none;
-}
+    /* Radios personalizados estilo Spotify */
+    .radio-custom {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        margin: 0.5rem 1rem 0.5rem 0;
+        font-weight: 500;
+        color: white;
+        position: relative;
+        padding-left: 28px;
+        user-select: none;
+    }
 
-.radio-custom input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
+    .radio-custom input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
 
-.radio-custom .checkmark {
-    position: absolute;
-    left: 0;
-    top: 2px;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    border: 2px solid white;
-    background-color: transparent;
-}
+    .radio-custom .checkmark {
+        position: absolute;
+        left: 0;
+        top: 2px;
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        border: 2px solid white;
+        background-color: transparent;
+    }
 
-.radio-custom input:checked ~ .checkmark {
-    border-color: #1db954;
-    background-color: transparent;
-}
+    .radio-custom input:checked ~ .checkmark {
+        border-color: #1db954;
+        background-color: transparent;
+    }
 
-.radio-custom .checkmark::after {
-    content: "";
-    position: absolute;
-    display: none;
-}
+    .radio-custom .checkmark::after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
 
-.radio-custom input:checked ~ .checkmark::after {
-    display: block;
-}
+    .radio-custom input:checked ~ .checkmark::after {
+        display: block;
+    }
 
-.radio-custom .checkmark::after {
-    top: 3px;
-    left: 3px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #1db954;
-}
+    .radio-custom .checkmark::after {
+        top: 3px;
+        left: 3px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #1db954;
+    }
+</style>
 
-    </style>
 </head>
 <body>
 <div class="register-container text-start">
@@ -211,16 +215,24 @@ input[type=number] {
         @csrf
 
         {{-- Paso 1: Email --}}
-        <div id="step-email">
-            <div class="mb-3">
-                <label for="email" class="form-label fw-bold">Dirección de correo electrónico</label>
-                <input type="email" name="email" id="email"
-                       class="form-control"
-                       placeholder="nombre@dominio.com"
-                       required>
-            </div>
-            <button type="button" class="btn btn-green w-100 py-2" onclick="goToStep2()">Siguiente</button>
-        </div>
+<div id="step-email">
+    <div class="mb-3">
+        <label for="email" class="form-label fw-bold">Dirección de correo electrónico</label>
+<input 
+  type="email" 
+  name="email" 
+  id="email" 
+  class="form-control"
+  placeholder="nombre@dominio.com" 
+  autocomplete="off"
+  required 
+  oninput="verificarEmail()" 
+/>
+        <small id="email-feedback" class="text-danger d-none">Este correo ya está registrado.</small>
+    </div>
+    <button type="button" id="next-btn-email" class="btn btn-green w-100 py-2" onclick="goToStep2()" disabled>Siguiente</button>
+</div>
+
 
         {{-- Paso 2: Contraseña --}}
         <div id="step-password" class="hidden">
@@ -234,12 +246,14 @@ input[type=number] {
 
             <div class="mb-3">
                 <label for="password" class="form-label fw-bold">Contraseña</label>
-                <div class="input-password-wrapper">
-                    <input type="password" name="password" id="password"
-                           placeholder=""
-                           required oninput="checkPassword()">
-                    <i class="bi bi-eye-slash toggle-password" id="toggle-icon" onclick="togglePassword()"></i>
-                </div>
+<div class="input-password-wrapper">
+    <input type="password" name="password" id="password"
+           class="form-control"
+           placeholder="Contraseña"
+           required oninput="checkPassword()">
+    <i class="bi bi-eye-slash toggle-password" id="toggle-icon" onclick="togglePassword()"></i>
+</div>
+
             </div>
 
             <div class="mb-4">
@@ -329,9 +343,46 @@ input[type=number] {
 
 
 <script>
+function verificarEmail() {
+    const emailInput = document.getElementById('email');
+    const email = emailInput.value.trim();
+    const feedback = document.getElementById('email-feedback');
+    const nextBtn = document.getElementById('next-btn-email');
+
+    if (!email || !email.includes('@')) {
+        feedback.classList.add('d-none');
+        nextBtn.disabled = true;
+        return;
+    }
+
+    fetch(`/verificar-email?email=${encodeURIComponent(email)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.existe) {
+                feedback.classList.remove('d-none');
+                nextBtn.disabled = true;
+            } else {
+                feedback.classList.add('d-none');
+                nextBtn.disabled = false;
+            }
+        })
+        .catch(() => {
+            feedback.classList.add('d-none');
+            nextBtn.disabled = true;
+        });
+}
+
 function goToStep2() {
     const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password'); // Nuevo
+
     if (emailInput.checkValidity()) {
+        // Limpiar campo de contraseña
+        if (passwordInput) {
+            passwordInput.value = '';
+            checkPassword(); // Resetea los requisitos visuales
+        }
+
         document.getElementById('step-email').classList.add('hidden');
         document.getElementById('step-password').classList.remove('hidden');
         document.getElementById('titulo-inicial').style.display = 'none';
@@ -339,12 +390,18 @@ function goToStep2() {
         emailInput.reportValidity();
     }
 }
-
 function backToStep1() {
+    const emailInput = document.getElementById('email');
+    if (emailInput) {
+        emailInput.value = '';
+        verificarEmail(); // Para que se reinicie el botón y feedback
+    }
+
     document.getElementById('step-password').classList.add('hidden');
     document.getElementById('step-email').classList.remove('hidden');
     document.getElementById('titulo-inicial').style.display = 'block';
 }
+
 
 function goToStep3() {
     document.getElementById('step-password').classList.add('hidden');
@@ -429,6 +486,48 @@ function backToStep2() {
 
         return true;
     }
+    function resetFormularioRegistro() {
+    // Limpiar campos de texto
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('nombre').value = '';
+    document.getElementById('dia').value = '';
+    document.getElementById('mes').selectedIndex = 0;
+    document.getElementById('anio').value = '';
+
+    // Limpiar radios
+    const radios = document.querySelectorAll('input[name="genero"]');
+    radios.forEach(r => r.checked = false);
+
+    // Ocultar errores
+    const feedback = document.getElementById('email-feedback');
+    if (feedback) feedback.classList.add('d-none');
+
+    // Desactivar botones
+    document.getElementById('next-btn-email').disabled = true;
+    document.getElementById('submit-btn').disabled = true;
+
+    // Reset visual
+    document.getElementById('step-password').classList.add('hidden');
+    document.getElementById('step-profile').classList.add('hidden');
+    document.getElementById('step-email').classList.remove('hidden');
+    document.getElementById('titulo-inicial').style.display = 'block';
+
+    // Reset de validación visual de contraseña
+    resetToNeutral('req-letter');
+    resetToNeutral('req-special');
+    resetToNeutral('req-length');
+
+    // Focus automático en email
+    document.getElementById('email').focus();
+}
+
+    window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('registro_nuevo') === 'true') {
+        resetFormularioRegistro();
+        localStorage.removeItem('registro_nuevo');
+    }
+});
 </script>
 
 </body>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title', 'Mi Spotify')</title>
+     @stack('styles') 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -190,9 +191,7 @@
 </div>
 
     <!-- Contenido principal con margen izquierdo -->
-    <main class="flex-grow-1 p-4 bg-dark text-white min-vh-100" style="margin-left: 260px; margin-top: 56px;">
-        @yield('content')
-    </main>
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -319,5 +318,6 @@ function mostrarCancionSeleccionada(cancion) {
     Registrarte gratis
 </a>
 </div>
+@stack('scripts') 
 </body>
 </html>

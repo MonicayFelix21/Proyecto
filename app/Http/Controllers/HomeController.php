@@ -10,8 +10,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $canciones = Cancion::take(12)->get();   // Aquí cargas canciones para la vista
-        $artistas = Artista::take(8)->get();     // Y artistas también
+        $canciones = Cancion::take(12)->get(); // <--- Esta línea falta
+        $artistas = Artista::take(8)->get();
 
         return view('inicio', compact('canciones', 'artistas'));
     }

@@ -3,106 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Iniciar sesión</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-    <style>
-        body {
-            background: linear-gradient(#121212, #000);
-            color: #fff;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
+    <link href="{{ asset('css/spotify-style.css') }}" rel="stylesheet">
 
-        .login-container {
-            max-width: 400px;
-            margin: auto;
-            margin-top: 100px;
-            background-color: #181818;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        }
 
-        .spotify-logo {
-            display: block;
-            margin: 0 auto 1rem;
-            height: 40px;
-        }
-
-        .spotify-heading {
-            text-align: center;
-            font-weight: 700;
-            font-size: 24px;
-            letter-spacing: -0.5px;
-            margin-bottom: 2rem;
-        }
-
-        .input-spotify {
-            background-color: #121212;
-            color: #fff;
-            border: 1px solid #555;
-            border-radius: 4px;
-            padding: 12px 16px;
-            transition: border 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: none;
-            outline: none;
-        }
-
-        .input-spotify:hover {
-            border: 1px solid white;
-        }
-
-        .input-spotify:focus,
-        .input-spotify:active {
-            background-color: #121212 !important;
-            color: #fff;
-            border: 1px solid #555 !important;
-            box-shadow: none !important;
-            outline: none;
-        }
-
-        .input-spotify::placeholder {
-            color: #b3b3b3;
-            font-weight: 400;
-        }
-
-.btn-green {
-    background-color: #1ed760;
-    color: #000;
-    font-weight: 700;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 999px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-green:hover {
-    background-color: #1fdf64;
-    color: #000;
-}
-
-        a {
-            color: #1db954;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .toggle-password {
-            color: #b3b3b3;
-            font-size: 1.2rem;
-            cursor: pointer;
-            z-index: 2;
-            right: 0.75rem;
-        }
-
-        .toggle-password:hover {
-            color: white;
-        }
-    </style>
+   
 </head>
 <body>
     <div class="login-container text-center">
@@ -147,10 +54,15 @@
         <div class="mt-4 text-center small">
             <a href="#">¿Se te ha olvidado la contraseña?</a><br>
     <span class="text-white-50">¿No tienes cuenta?</span>
-    <a href="{{ route('registro') }}">Suscríbete a Spotify</a>
+<a href="{{ route('registro') }}" id="enlace-suscripcion">Suscríbete a Spotify</a>
 
         </div>
     </div>
+<script>
+    document.getElementById('enlace-suscripcion')?.addEventListener('click', function () {
+        localStorage.setItem('registro_nuevo', 'true');
+    });
+</script>
 
     <!-- Mostrar/ocultar contraseña -->
     <script>

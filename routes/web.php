@@ -6,18 +6,16 @@ use App\Models\Cancion;
 use App\Http\Controllers\CancionController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RegistroController;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArtistaController;
+
+
+Route::get('/', [HomeController::class, 'index'])->name('inicio');
 
 
 
-Route::get('/inicio', function () {
-    $canciones = Cancion::all(); // sin groupBy
-    return view('inicio', compact('canciones'));
-});
-
-// Redirección desde "/" a "/inicio"
-Route::get('/', function () {
-    return redirect('/inicio');
-});
+Route::get('/artistas', [ArtistaController::class, 'index'])->name('artistas.index');
 
 // Ruta de búsqueda AJAX
 Route::get('/buscar-canciones', [CancionController::class, 'buscar'])->name('canciones.buscar');
@@ -41,4 +39,9 @@ Route::get('/registro', function () {
 })->name('registro');
 
 Route::post('/registro', [RegistroController::class, 'registrar'])->name('registro.submit');
+
+Route::get('/verificar-email', function (Illuminate\Http\Request $request) {
+    $existe = DB::table('users')->where('email', $request->email)->exists();
+    return response()->json(['existe' => $existe]);
+});
 
