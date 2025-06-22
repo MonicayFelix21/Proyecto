@@ -340,8 +340,6 @@
 </div>
 
 
-
-
 <script>
 function verificarEmail() {
     const emailInput = document.getElementById('email');

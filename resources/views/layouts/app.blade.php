@@ -8,7 +8,17 @@
   {{-- Bootstrap CSS + Icons --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
+@if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+  @vite([
+    'resources/css/app.css',
+    'resources/css/home.css',   
+    'resources/js/app.js',
+  ])
+@else
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/home.css') }}"> 
+  <script src="{{ asset('js/app.js') }}" defer></script>
+@endif
   {{-- Estilos globales --}}
   <style>
     body {
@@ -108,71 +118,25 @@
 </head>
 <body class="bg-dark text-white">
 
-  {{-- Navbar --}}
-  <nav class="navbar navbar-dark bg-black px-3 py-2 fixed-top" style="z-index:1030;">
-    <div class="d-flex align-items-center w-100 gap-3">
-      <a href="{{ route('inicio') }}">
-        <img src="{{ asset('imagenes/spotify.png') }}" alt="Spotify" style="height:32px;">
-      </a>
-      <a href="{{ route('inicio') }}"
-         class="btn rounded-circle d-flex align-items-center justify-content-center"
-         style="width:40px; height:40px; background-color:#2a2a2a;">
-        <i class="bi bi-house-door-fill text-white"></i>
-      </a>
-
-      <div class="position-relative" style="max-width:600px; width:100%;">
-        <div class="buscador-wrapper">
-          <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-search text-white fs-5"></i>
-            <input id="busqueda" type="text"
-                   class="form-control bg-transparent border-0 text-white p-0"
-                   placeholder="¿Qué quieres reproducir?" style="outline:none; box-shadow:none;">
-          </div>
-          <div class="d-flex align-items-center">
-            <div style="width:1px; height:24px; background: rgba(255,255,255,0.3);" class="mx-3"></div>
-            <button class="btn p-0" style="width:30px; height:30px;">
-              <i class="bi bi-inbox text-white fs-5"></i>
-            </button>
-          </div>
-        </div>
-        <div id="sugerencias"
-             class="position-absolute bg-dark text-white rounded mt-1 px-3 py-2 w-100"
-             style="z-index:1000; display:none;"></div>
-      </div>
-
-      <div class="d-flex align-items-center gap-4 ms-auto">
-        <a href="#" class="text-white-50 fw-semibold">Premium</a>
-        <a href="#" class="text-white-50 fw-semibold">Asistencia</a>
-        <a href="#" class="text-white-50 fw-semibold">Descargar</a>
-        <div class="vr"></div>
-        <a href="#" class="d-flex align-items-center text-white-50">
-          <i class="bi bi-download me-1"></i> Instalar app
-        </a>
-        <a href="{{ route('registro') }}" class="text-white-50 fw-semibold">Registrarte</a>
-        <a href="{{ route('login') }}" class="btn btn-light rounded-pill px-4 fw-bold">Iniciar sesión</a>
-      </div>
-    </div>
-  </nav>
+ {{-- 1) Navbar como componente --}}
+  <x-navbar />
 
   <div class="d-flex">
-    @include('components.sidebar')
+    {{-- 2) Sidebar como componente --}}
+    <x-sidebar />
 
-    <main class="flex-grow-1 p-4 text-white min-vh-100 main-gradient-bg"
-          style="margin-left:260px; margin-top:56px;">
+    {{-- 3) Contenido principal --}}
+    <main
+      class="flex-grow-1 p-4 text-white min-vh-100 main-gradient-bg"
+      style="margin-left:260px; margin-top:56px;"
+    >
       @yield('content')
     </main>
   </div>
 
-  {{-- Banner inferior --}}
-  <div class="banner-inferior fixed-bottom w-100 px-4 py-3 text-white d-flex justify-content-between align-items-center">
-    <div>
-      <strong>Muestra de Spotify</strong><br>
-      Regístrate para disfrutar de canciones y podcasts sin límites, con anuncios ocasionales. No hace falta tarjeta de crédito.
-    </div>
-    <a href="{{ route('registro') }}" class="btn btn-light text-black fw-bold rounded-pill px-4">
-      Registrarte gratis
-    </a>
-  </div>
+  {{-- 4) Banner inferior como componente --}}
+  <x-banner-footer />
+
 
   {{-- Bootstrap JS --}}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

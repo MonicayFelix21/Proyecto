@@ -1,0 +1,167 @@
+/* resources/css/register.css */
+
+/* Layout general de la página de registro */
+body.register-page {
+  background-color: #121212;
+  color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* Contenedor del formulario */
+.register-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 2rem;
+  background-color: #121212;
+}
+
+/* Logo */
+.spotify-logo {
+  display: block;
+  margin: 0 auto 1rem;
+  height: 40px;
+}
+
+/* Título */
+.register-container h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+}
+
+/* Campos de formulario */
+.register-container .form-control,
+.register-container select.form-control {
+  background-color: #121212;
+  color: #fff;
+  border: 1px solid #666;
+  border-radius: 6px;
+  height: 45px;
+}
+.register-container .form-control::placeholder {
+  color: #b3b3b3;
+}
+.register-container .form-control:focus {
+  border-color: #fff;
+  box-shadow: none;
+}
+
+/* Botón principal */
+.btn-green {
+  background-color: #1db954;
+  color: #000;
+  border-radius: 999px;
+  font-weight: bold;
+}
+.btn-green:hover {
+  background-color: #1ed760;
+}
+
+/* Enlaces pequeños */
+.small-link {
+  font-size: 0.9rem;
+  color: #1db954;
+}
+
+/* Wrapper para el input de contraseña */
+.input-password-wrapper {
+  position: relative;
+}
+.input-password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+  background-color: #121212;
+  border: 1px solid #b3b3b3;
+  color: #fff;
+  border-radius: 6px;
+  height: 45px;
+}
+.input-password-wrapper input:focus {
+  border-color: #fff;
+  box-shadow: none;
+}
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+/* Requisitos de contraseña */
+.requirement {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+.requirement.neutral { color: #fff; }
+.requirement.valid   { color: #1ed760; }
+.requirement.invalid { color: #e91429; }
+
+/* Ocultar flechas en input[type=number] */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Radios personalizados */
+.radio-custom {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0.5rem 1rem 0.5rem 0;
+  font-weight: 500;
+  color: #fff;
+  position: relative;
+  padding-left: 28px;
+  user-select: none;
+}
+.radio-custom input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.radio-custom .checkmark {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: transparent;
+}
+.radio-custom input:checked ~ .checkmark {
+  border-color: #1db954;
+}
+.radio-custom .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.radio-custom input:checked ~ .checkmark::after {
+  display: block;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1db954;
+}
+
+/* Ocultos y utilidades */
+.hidden { display: none; }

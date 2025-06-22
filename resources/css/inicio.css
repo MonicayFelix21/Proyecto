@@ -1,0 +1,17 @@
+/* resources/css/inicio.css */
+
+/* ====== Carrusel de artistas ====== */
+#carrusel-artistas::-webkit-scrollbar {
+  display: none;
+}
+#carrusel-artistas {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.grupo-carrusel:hover .btn-scroll {
+  opacity: 1;
+}
+.btn-scroll {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}

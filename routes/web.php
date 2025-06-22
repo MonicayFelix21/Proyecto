@@ -1,19 +1,18 @@
 <?php
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Cancion;
 use App\Http\Controllers\CancionController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RegistroController;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArtistaController;
-
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', [HomeController::class, 'index'])->name('inicio');
-
-
 
 Route::get('/artistas', [ArtistaController::class, 'index'])->name('artistas.index');
 
@@ -40,8 +39,13 @@ Route::get('/registro', function () {
 
 Route::post('/registro', [RegistroController::class, 'registrar'])->name('registro.submit');
 
-Route::get('/verificar-email', function (Illuminate\Http\Request $request) {
-    $existe = DB::table('users')->where('email', $request->email)->exists();
+Route::get('/verificar-email', function (Request $request) {
+    $existe = DB::table('users')
+                ->where('email', $request->email)
+                ->exists();
     return response()->json(['existe' => $existe]);
-});
+});  // ← Aquí cerramos correctamente el callback :contentReference[oaicite:0]{index=0}
 
+Route::get('/dashboard', [DashboardController::class, 'index'])
+     ->name('dashboard')
+     ->middleware('auth');
