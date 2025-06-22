@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Album;
 use App\Models\Cancion;
 use App\Models\Artista;
 
@@ -10,9 +11,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $canciones = Cancion::take(12)->get(); // <--- Esta línea falta
+        $canciones = Cancion::take(12)->get(); 
         $artistas = Artista::take(8)->get();
+         $albumes    = Album::popular()->get();
 
-        return view('inicio', compact('canciones', 'artistas'));
+        return view('inicio', compact('canciones', 'artistas', 'albumes'));
     }
 }
