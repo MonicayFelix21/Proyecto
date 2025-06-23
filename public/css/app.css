@@ -1,11 +1,71 @@
-@import 'tailwindcss';
+/* Corrige scroll horizontal global */
+body {
+  overflow-x: hidden;
+}
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+/* Asegura que todos los elementos respeten el ancho */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* Carrusel: contenedor externo */
+.grupo-carrusel {
+  overflow-x: auto;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+}
+
+/* Carrusel: elementos internos */
+#carrusel-artistas {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+
+  /* Oculta la scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#carrusel-artistas::-webkit-scrollbar {
+  display: none;
+}
+
+/* Botones de scroll laterales */
+.btn-scroll {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  display: none;
+  z-index: 2;
+  position: absolute;
+}
+
+#scroll-izquierda {
+  left: 0;
+}
+
+#scroll-derecha {
+  right: 0;
+}
+
+/* Mostrar botones solo en escritorio al pasar el mouse */
+@media (min-width: 768px) {
+  .grupo-carrusel:hover .btn-scroll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+footer {
+  padding-left: 260px;
+}
 }

@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Album;
 use App\Models\Cancion;
 use App\Models\Artista;
+use App\Models\Album;
 
 class HomeController extends Controller
 {
@@ -13,8 +11,8 @@ class HomeController extends Controller
     {
         $canciones = Cancion::take(12)->get(); 
         $artistas = Artista::take(8)->get();
-         $albumes    = Album::popular()->get();
+        $albumes = Album::popular()->get();
 
-        return view('inicio', compact('canciones', 'artistas', 'albumes'));
+        return view('home', compact('canciones', 'artistas', 'albumes'));
     }
 }

@@ -23,19 +23,23 @@
       Mostrar todos
     </a>
   </div>
-  <div class="position-relative mx-auto grupo-carrusel" style="max-width: 1150px; overflow: visible;">
-    <button id="scroll-izquierda" class="btn btn-scroll position-absolute d-flex justify-content-center align-items-center">
-      <i class="bi bi-chevron-left text-white fs-5"></i>
-    </button>
-    <button id="scroll-derecha" class="btn btn-scroll position-absolute d-flex justify-content-center align-items-center">
-      <i class="bi bi-chevron-right text-white fs-5"></i>
-    </button>
-    <div id="carrusel-artistas" class="d-flex flex-nowrap gap-4 px-2">
-      @foreach($artistas as $artista)
-        <x-artist-card :artist="$artista" />
-      @endforeach
-    </div>
+
+<div class="position-relative mx-auto grupo-carrusel" style="max-width: 1150px;">
+  <button id="scroll-izquierda" class="btn btn-scroll position-absolute">
+    <i class="bi bi-chevron-left text-white fs-5"></i>
+  </button>
+
+  <button id="scroll-derecha" class="btn btn-scroll position-absolute">
+    <i class="bi bi-chevron-right text-white fs-5"></i>
+  </button>
+
+  <div id="carrusel-artistas" class="d-flex flex-nowrap gap-4 px-2">
+    @foreach($artistas as $artista)
+      <x-artist-card :artist="$artista" />
+    @endforeach
   </div>
+</div>
+
 
   <!-- Álbumes y sencillos populares -->
   <div class="d-flex justify-content-between align-items-center mb-4 mt-5">

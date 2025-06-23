@@ -8,6 +8,13 @@
   {{-- Bootstrap CSS + Icons --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/spotify-menu.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <script src="{{ asset('js/carrusel.js') }}"></script>
+<input id="barra-progreso" type="range" min="0" max="100" value="0" />
+
+
+
 @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
   @vite([
     'resources/css/app.css',
@@ -134,8 +141,12 @@
     </main>
   </div>
 
+      <x-footer />
+
   {{-- 4) Banner inferior como componente --}}
+@guest
   <x-banner-footer />
+@endguest
 
 
   {{-- Bootstrap JS --}}
@@ -144,21 +155,7 @@
   {{-- Scripts globales --}}
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Play on hover
-      const cards = document.querySelectorAll('.song-card');
-      let player = new Audio();
-      cards.forEach(card => {
-        const src = card.dataset.audio;
-        card.addEventListener('mouseenter', () => {
-          player.src = src;
-          player.play().catch(() => {});
-        });
-        card.addEventListener('mouseleave', () => {
-          player.pause();
-          player.currentTime = 0;
-        });
-      });
-
+     
       // Sugerencias de búsqueda
       const input = document.getElementById('busqueda'),
             suger = document.getElementById('sugerencias');
@@ -193,6 +190,10 @@
   </script>
 
   {{-- Scripts desde vistas --}}
+@unless (request()->is('inicio'))
+  <x-reproductor />
+@endunless
   @stack('scripts')
+
 </body>
 </html>

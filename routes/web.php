@@ -8,11 +8,17 @@ use App\Models\Cancion;
 use App\Http\Controllers\CancionController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RegistroController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InicioController;
 use App\Http\Controllers\ArtistaController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', [HomeController::class, 'index'])->name('inicio');
+
+Route::get('/inicio', [InicioController::class, 'index'])->name('inicio');
+Route::redirect('/', '/inicio');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
 
 Route::get('/artistas', [ArtistaController::class, 'index'])->name('artistas.index');
 
@@ -44,8 +50,6 @@ Route::get('/verificar-email', function (Request $request) {
                 ->where('email', $request->email)
                 ->exists();
     return response()->json(['existe' => $existe]);
-});  // ← Aquí cerramos correctamente el callback :contentReference[oaicite:0]{index=0}
+});  
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-     ->name('dashboard')
-     ->middleware('auth');
+
