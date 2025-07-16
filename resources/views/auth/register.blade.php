@@ -211,7 +211,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('registro') }}">
+    <form method="POST" action="{{ route('registro.submit') }}">
         @csrf
 
         {{-- Paso 1: Email --}}

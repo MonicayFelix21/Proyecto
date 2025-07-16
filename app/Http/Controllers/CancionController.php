@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cancion;
 use App\Models\Artista;
 
-class HomeController extends Controller
+class CancionController extends Controller
 {
     public function index()
     {

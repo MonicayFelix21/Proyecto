@@ -20,6 +20,14 @@
 <div class="d-flex align-items-center gap-3 ms-auto">
 
   @auth
+    @if(auth()->user()->isSpotifyPremium())
+    <a href="{{ route('spotify.player') }}" class="text-white-50 d-flex align-items-center gap-1 text-decoration-none" title="Reproductor Web">
+      <i class="fas fa-play-circle"></i> Reproductor
+    </a>
+    <a href="{{ route('spotify.avanzado') }}" class="text-white-50 d-flex align-items-center gap-1 text-decoration-none" title="Funciones Avanzadas">
+      <i class="bi bi-stars"></i> Avanzado
+    </a>
+    @endif
     <a href="#" class="text-white-50 d-flex align-items-center gap-1 text-decoration-none">
       <i class="bi bi-download"></i> Instalar app
     </a>
@@ -59,11 +67,11 @@
 </ul>
 
   @else
-    <a href="#" class="text-white-50 fw-semibold">Premium</a>
-    <a href="#" class="text-white-50 fw-semibold">Asistencia</a>
-    <a href="#" class="text-white-50 fw-semibold">Descargar</a>
+    <a href="https://www.spotify.com/premium/" target="_blank" rel="noopener" class="text-white-50 fw-semibold">Premium</a>
+    <a href="https://support.spotify.com/" target="_blank" rel="noopener" class="text-white-50 fw-semibold">Asistencia</a>
+    <a href="https://www.spotify.com/download/" target="_blank" rel="noopener" class="text-white-50 fw-semibold">Descargar</a>
     <div class="vr"></div>
-    <a href="#" class="d-flex align-items-center text-white-50">
+    <a href="https://www.spotify.com/download/" target="_blank" rel="noopener" class="d-flex align-items-center text-white-50">
       <i class="bi bi-download me-1"></i> Instalar app
     </a>
     <a href="{{ route('registro') }}" class="text-white-50 fw-semibold">Registrarte</a>
