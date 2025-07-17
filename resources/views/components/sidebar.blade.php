@@ -62,7 +62,7 @@
                 </div>
                 <div class="library-info flex-grow-1">
                     <div class="library-title">Tus me gusta</div>
-                    <div class="library-subtitle text-white-50 small">Playlist • 0 canciones</div>
+                    <div class="library-subtitle text-white-50 small">Playlist • <span id="liked-songs-count">0</span> canciones</div>
                 </div>
             </div>
 
@@ -149,6 +149,19 @@
             <div class="library-icon bg-dark d-flex align-items-center justify-content-center rounded"
                  style="width: 48px; height: 48px;">
                 <i class="bi bi-mic-fill text-white-50"></i>
+            </div>
+        </div>
+        <div class="mb-3" title="Explorar">
+            <button class="btn btn-sm text-white-50 p-2 rounded-circle d-flex align-items-center justify-content-center"
+                    style="width: 48px; height: 48px; background: none; border: none;"
+                    onclick="window.open('https://open.spotify.com/genre', '_blank')">
+                <i class="bi bi-inbox fs-5"></i>
+            </button>
+        </div>
+        <div class="mb-3" title="Perfil">
+            <div class="library-icon d-flex align-items-center justify-content-center rounded-circle bg-secondary fw-bold text-white"
+                 style="width: 48px; height: 48px; font-size: 1.5rem;">
+                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
             </div>
         </div>
     </div>
@@ -337,3 +350,17 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </div>
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/api/spotify/liked-songs-count')
+        .then(res => res.json())
+        .then(data => {
+            if (data.count !== undefined) {
+                document.getElementById('liked-songs-count').textContent = data.count;
+            }
+        });
+});
+</script>
+@endpush

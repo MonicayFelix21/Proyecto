@@ -2,16 +2,30 @@
 <nav class="navbar navbar-dark bg-black px-3 py-2 fixed-top" style="z-index:1030;">
   <div class="d-flex align-items-center w-100 gap-3">
     {{-- Logo de inicio --}}
+    @auth
+    <a href="{{ route('home') }}">
+      <img src="{{ asset('imagenes/spotify.png') }}" alt="Spotify" style="height:32px;">
+    </a>
+    @else
     <a href="{{ route('inicio') }}">
       <img src="{{ asset('imagenes/spotify.png') }}" alt="Spotify" style="height:32px;">
     </a>
+    @endauth
 
     {{-- Botón Home --}}
+    @auth
+    <a href="{{ route('home') }}"
+       class="btn rounded-circle d-flex align-items-center justify-content-center"
+       style="width:40px; height:40px; background-color:#2a2a2a;">
+      <i class="bi bi-house-door-fill text-white"></i>
+    </a>
+    @else
     <a href="{{ route('inicio') }}"
        class="btn rounded-circle d-flex align-items-center justify-content-center"
        style="width:40px; height:40px; background-color:#2a2a2a;">
       <i class="bi bi-house-door-fill text-white"></i>
     </a>
+    @endauth
 
     {{-- Componente del buscador --}}
     <x-search-box />

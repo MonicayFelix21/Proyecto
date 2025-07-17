@@ -45,7 +45,7 @@ class RegistroController extends Controller
 
         Auth::login($user);
 
-return redirect()->route('home');
+        return redirect()->route('home');
     }
 
     private function mesANumero($mes)

@@ -10,6 +10,7 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\ArtistaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SpotifyController;
+use App\Http\Controllers\SpotifyAuthController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 // Pantalla pública (ahora con datos de Spotify si ya hay token guardado en BD)
@@ -50,9 +51,9 @@ Route::get('/buscar-cancion', function (Request $r) {
 
 // OAuth Spotify (necesita auth para guardar tokens en BD)
 Route::middleware('auth')->group(function () {
-    Route::get('/auth/spotify',     [SpotifyController::class, 'redirectToSpotify'])
+    Route::get('/auth/spotify', [SpotifyAuthController::class, 'redirectToSpotify'])
          ->name('spotify.auth');
-    Route::get('/spotify/callback', [SpotifyController::class, 'handleSpotifyCallback'])
+    Route::get('/auth/spotify/callback', [SpotifyAuthController::class, 'handleCallback'])
          ->name('spotify.callback');
     Route::post('/spotify/refresh', [SpotifyController::class, 'refreshAccessToken'])
          ->name('spotify.refresh');
@@ -185,3 +186,6 @@ Route::get('/api/spotify/categorias', [\App\Http\Controllers\SpotifySearchContro
 
 // Ruta protegida para 'Tus me gusta'
 Route::middleware('auth')->get('/me-gusta', [SpotifyController::class, 'likedTracks'])->name('me-gusta');
+
+// Ruta para obtener el número de canciones guardadas (me gusta) del usuario en Spotify
+Route::get('/api/spotify/liked-songs-count', [App\Http\Controllers\SpotifyPlayerController::class, 'getLikedSongsCount'])->middleware('auth');
