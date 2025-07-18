@@ -2,16 +2,30 @@
 <nav class="navbar navbar-dark bg-black px-3 py-2 fixed-top" style="z-index:1030;">
   <div class="d-flex align-items-center w-100 gap-3">
     {{-- Logo de inicio --}}
+    @auth
+    <a href="{{ route('home') }}">
+      <img src="{{ asset('imagenes/spotify.png') }}" alt="Spotify" style="height:32px;">
+    </a>
+    @else
     <a href="{{ route('inicio') }}">
       <img src="{{ asset('imagenes/spotify.png') }}" alt="Spotify" style="height:32px;">
     </a>
+    @endauth
 
     {{-- Botón Home --}}
+    @auth
+    <a href="{{ route('home') }}"
+       class="btn rounded-circle d-flex align-items-center justify-content-center"
+       style="width:40px; height:40px; background-color:#2a2a2a;">
+      <i class="bi bi-house-door-fill text-white"></i>
+    </a>
+    @else
     <a href="{{ route('inicio') }}"
        class="btn rounded-circle d-flex align-items-center justify-content-center"
        style="width:40px; height:40px; background-color:#2a2a2a;">
       <i class="bi bi-house-door-fill text-white"></i>
     </a>
+    @endauth
 
     {{-- Componente del buscador --}}
     <x-search-box />
@@ -20,14 +34,6 @@
 <div class="d-flex align-items-center gap-3 ms-auto">
 
   @auth
-    @if(auth()->user()->isSpotifyPremium())
-    <a href="{{ route('spotify.player') }}" class="text-white-50 d-flex align-items-center gap-1 text-decoration-none" title="Reproductor Web">
-      <i class="fas fa-play-circle"></i> Reproductor
-    </a>
-    <a href="{{ route('spotify.avanzado') }}" class="text-white-50 d-flex align-items-center gap-1 text-decoration-none" title="Funciones Avanzadas">
-      <i class="bi bi-stars"></i> Avanzado
-    </a>
-    @endif
     <a href="#" class="text-white-50 d-flex align-items-center gap-1 text-decoration-none">
       <i class="bi bi-download"></i> Instalar app
     </a>
@@ -71,7 +77,7 @@
     <a href="https://support.spotify.com/" target="_blank" rel="noopener" class="text-white-50 fw-semibold">Asistencia</a>
     <a href="https://www.spotify.com/download/" target="_blank" rel="noopener" class="text-white-50 fw-semibold">Descargar</a>
     <div class="vr"></div>
-    <a href="https://www.spotify.com/download/" target="_blank" rel="noopener" class="d-flex align-items-center text-white-50">
+    <a href="https://www.spotify.com/mx/download/windows/" target="_blank" rel="noopener" class="d-flex align-items-center text-white-50">
       <i class="bi bi-download me-1"></i> Instalar app
     </a>
     <a href="{{ route('registro') }}" class="text-white-50 fw-semibold">Registrarte</a>

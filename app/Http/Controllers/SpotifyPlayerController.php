@@ -133,4 +133,18 @@ class SpotifyPlayerController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+    /**
+     * Devuelve el número de canciones guardadas (me gusta) del usuario en Spotify.
+     */
+    public function getLikedSongsCount()
+    {
+        try {
+            $response = $this->spotifyClient->userRequest('me/tracks?limit=1');
+            $total = $response['total'] ?? 0;
+            return response()->json(['count' => $total]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
 }

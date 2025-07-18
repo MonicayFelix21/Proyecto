@@ -747,6 +747,15 @@
           heartBtn.title = 'Agregar a favoritos';
           showLikeToast('Quitado de Tus me gusta', false);
         }
+        // Actualizar el contador en la sidebar en tiempo real
+        fetch('/api/spotify/liked-songs-count')
+          .then(res => res.json())
+          .then(data => {
+            if (data.count !== undefined) {
+              const likedCount = document.getElementById('liked-songs-count');
+              if (likedCount) likedCount.textContent = data.count;
+            }
+          });
         console.log(`✅ Track ${data.action} ${data.is_saved ? 'a' : 'de'} favoritos`);
       }
     })

@@ -15,9 +15,9 @@ Route::middleware('auth')->get('/spotify/reset-connection', function () {
         'spotify_token_expires_at' => null,
     ]);
     
-    echo "<h2>🔄 Conexión de Spotify Reiniciada</h2>";
-    echo "<p>✅ Tokens eliminados correctamente</p>";
-    echo "<p>🔗 <a href='/auth/spotify' style='color: #1db954; font-size: 18px; font-weight: bold;'>Conectar Spotify nuevamente con permisos completos</a></p>";
+    echo "<h2> Conexión de Spotify Reiniciada</h2>";
+    echo "<p> Tokens eliminados correctamente</p>";
+    echo "<p> <a href='/auth/spotify' style='color: #1db954; font-size: 18px; font-weight: bold;'>Conectar Spotify nuevamente con permisos completos</a></p>";
     echo "<br>";
     echo "<p style='background: #f0f0f0; padding: 10px; border-radius: 5px;'>";
     echo "<strong>Nota:</strong> Ahora se solicitarán los permisos correctos, incluyendo 'user-read-private' ";

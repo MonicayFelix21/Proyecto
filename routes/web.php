@@ -10,6 +10,7 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\ArtistaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SpotifyController;
+use App\Http\Controllers\SpotifyAuthController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 // Pantalla pública (ahora con datos de Spotify si ya hay token guardado en BD)
@@ -50,14 +51,14 @@ Route::get('/buscar-cancion', function (Request $r) {
 
 // OAuth Spotify (necesita auth para guardar tokens en BD)
 Route::middleware('auth')->group(function () {
-    Route::get('/auth/spotify',     [SpotifyController::class, 'redirectToSpotify'])
+    Route::get('/auth/spotify', [SpotifyAuthController::class, 'redirectToSpotify'])
          ->name('spotify.auth');
-    Route::get('/spotify/callback', [SpotifyController::class, 'handleSpotifyCallback'])
+    Route::get('/auth/spotify/callback', [SpotifyAuthController::class, 'handleCallback'])
          ->name('spotify.callback');
     Route::post('/spotify/refresh', [SpotifyController::class, 'refreshAccessToken'])
          ->name('spotify.refresh');
 
-    // Pantalla privada (idéntica a /inicio, pero forzada login)
+    // Pantalla privada 
     Route::get('/home', [HomeController::class, 'index'])
          ->name('home');
 });
@@ -86,20 +87,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/api/spotify/is-premium', [App\Http\Controllers\SpotifyAccountController::class, 'isPremium'])
          ->name('api.spotify.is.premium');
 
-// Rutas del reproductor web (solo para Premium)
-    Route::get('/spotify/player', [App\Http\Controllers\SpotifyPlayerController::class, 'show'])
-         ->name('spotify.player');
-    
-    Route::prefix('api/spotify/player')->group(function () {
-        Route::get('/current', [App\Http\Controllers\SpotifyPlayerController::class, 'getCurrentPlayback']);
-        Route::post('/play', [App\Http\Controllers\SpotifyPlayerController::class, 'play']);
-        Route::post('/pause', [App\Http\Controllers\SpotifyPlayerController::class, 'pause']);
-        Route::post('/next', [App\Http\Controllers\SpotifyPlayerController::class, 'next']);
-        Route::post('/previous', [App\Http\Controllers\SpotifyPlayerController::class, 'previous']);
-        Route::post('/volume', [App\Http\Controllers\SpotifyPlayerController::class, 'setVolume']);
-    });
-
-    // 🎵 Nuevas APIs avanzadas de Spotify
+    //  Nuevas APIs avanzadas de Spotify
     Route::prefix('api/spotify')->group(function () {
         // Historial y actividad
         Route::get('/recently-played', [App\Http\Controllers\SpotifyAdvancedController::class, 'getRecentlyPlayed']);
@@ -114,11 +102,6 @@ Route::middleware('auth')->group(function () {
         
         // Playlists
         Route::get('/playlists', [App\Http\Controllers\SpotifyAdvancedController::class, 'getUserPlaylists']);
-        
-        // Control avanzado
-        Route::post('/repeat', [App\Http\Controllers\SpotifyAdvancedController::class, 'setRepeatMode']);
-        Route::post('/shuffle', [App\Http\Controllers\SpotifyAdvancedController::class, 'setShuffle']);
-        Route::get('/queue', [App\Http\Controllers\SpotifyAdvancedController::class, 'getQueue']);
     });
 
     // Ruta de verificación completa del sistema
@@ -157,7 +140,6 @@ Route::middleware('auth')->group(function () {
         echo "<h3>Enlaces de Prueba:</h3>";
         echo "<a href='/spotify/account-status' style='background: blue; color: white; padding: 10px; margin: 5px; text-decoration: none;'>Estado de Cuenta</a> ";
         echo "<a href='/api/spotify/is-premium' style='background: green; color: white; padding: 10px; margin: 5px; text-decoration: none;'>API Premium</a> ";
-        echo "<a href='/spotify/player' style='background: red; color: white; padding: 10px; margin: 5px; text-decoration: none;'>Reproductor</a> ";
         echo "<a href='/spotify/reset-connection' style='background: orange; color: white; padding: 10px; margin: 5px; text-decoration: none;'>Reconectar</a>";
         
         return '';
@@ -185,3 +167,6 @@ Route::get('/api/spotify/categorias', [\App\Http\Controllers\SpotifySearchContro
 
 // Ruta protegida para 'Tus me gusta'
 Route::middleware('auth')->get('/me-gusta', [SpotifyController::class, 'likedTracks'])->name('me-gusta');
+
+// Ruta para obtener el número de canciones guardadas (me gusta) del usuario en Spotify
+Route::get('/api/spotify/liked-songs-count', [App\Http\Controllers\SpotifyPlayerController::class, 'getLikedSongsCount'])->middleware('auth');

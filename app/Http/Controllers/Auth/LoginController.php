@@ -19,7 +19,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-return redirect()->intended(route('home'));
+            return redirect()->route('home'); // Redirige siempre a Home
         }
 
         return back()->withErrors([
@@ -27,14 +27,13 @@ return redirect()->intended(route('home'));
         ]);
     }
 
-public function logout(Request $request)
-{
-    Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    return redirect()->route('inicio');
-}
-
+        return redirect()->route('inicio');
+    }
 }
 

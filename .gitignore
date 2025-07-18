@@ -21,3 +21,21 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# Laravel
+/vendor/
+/node_modules/
+.env
+.env.*
+.DS_Store
+*.log
+/storage/
+/public/storage
+.idea/
+.vscode/
+*.sqlite
+*.bak
+*.tmp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
