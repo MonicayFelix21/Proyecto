@@ -1,0 +1,101 @@
+/* Estilo de la barra de progreso */
+#barra-progreso {
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  accent-color: #1db954;
+  appearance: none;
+}
+
+/* TRACK (línea de fondo) */
+#barra-progreso::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #b3b3b3;
+  border-radius: 1px;
+}
+#barra-progreso::-moz-range-track {
+  height: 2px;
+  background: #b3b3b3;
+  border-radius: 1px;
+}
+
+/* THUMB (el círculo que se arrastra) */
+#barra-progreso::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  border: none;
+  margin-top: -5px; /* para centrar en el track */
+  appearance: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+#barra-progreso::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+/* Efecto al pasar el mouse */
+#barra-progreso:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+#barra-progreso:hover::-moz-range-thumb {
+  transform: scale(1.2);
+}
+
+/* VOLUMEN: línea delgada y elegante */
+#barra-volumen {
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  accent-color: #b3b3b3;
+  appearance: none;
+}
+
+/* TRACK del volumen */
+#barra-volumen::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #b3b3b3;
+  border-radius: 1px;
+}
+#barra-volumen::-moz-range-track {
+  height: 2px;
+  background: #b3b3b3;
+  border-radius: 1px;
+}
+
+/* THUMB (circulito del volumen) */
+#barra-volumen::-webkit-slider-thumb {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: none;
+  margin-top: -4px; /* ajusta verticalmente */
+  appearance: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+#barra-volumen::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+/* Hover */
+#barra-volumen:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+#barra-volumen:hover::-moz-range-thumb {
+  transform: scale(1.2);
+}

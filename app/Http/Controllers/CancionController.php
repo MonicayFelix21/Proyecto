@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cancion;
+use App\Models\Artista;
 
 class CancionController extends Controller
 {
-    public function buscar(Request $request)
+    public function index()
     {
-        $query = $request->get('q');
+        $canciones = Cancion::take(12)->get();
+        $artistas   = Artista::take(8)->get();
 
-        $canciones = Cancion::where('titulo', 'LIKE', "%{$query}%")
-            ->orWhere('artista', 'LIKE', "%{$query}%")
-            ->limit(5)
-            ->get();
-
-        return response()->json($canciones);
+        return view('inicio', compact('canciones', 'artistas'));
     }
 }

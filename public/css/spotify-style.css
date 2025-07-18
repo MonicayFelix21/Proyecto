@@ -1,0 +1,204 @@
+body {
+    background: linear-gradient(#121212, #000);
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #181818;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .spotify-logo {
+            display: block;
+            margin: 0 auto 1rem;
+            height: 40px;
+        }
+
+        .spotify-heading {
+            text-align: center;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: -0.5px;
+            margin-bottom: 2rem;
+        }
+
+        .input-spotify {
+            background-color: #121212;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 4px;
+            padding: 12px 16px;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: none;
+            outline: none;
+        }
+
+        .input-spotify:hover {
+            border: 1px solid white;
+        }
+
+        .input-spotify:focus,
+        .input-spotify:active {
+            background-color: #121212 !important;
+            color: #fff;
+            border: 1px solid #555 !important;
+            box-shadow: none !important;
+            outline: none;
+        }
+
+        .input-spotify::placeholder {
+            color: #b3b3b3;
+            font-weight: 400;
+        }
+
+.btn-green {
+    background-color: #1ed760;
+    color: #000;
+    font-weight: 700;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 999px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-green:hover {
+    background-color: #1fdf64;
+    color: #000;
+}
+
+        a {
+            color: #1db954;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .toggle-password {
+            color: #b3b3b3;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 2;
+            right: 0.75rem;
+        }
+
+        .toggle-password:hover {
+            color: white;
+        }
+
+/* Estilos específicos para el sidebar de Spotify */
+.sidebar-spotify {
+    background-color: #000 !important;
+    border-right: 1px solid #282828;
+}
+
+.sidebar-spotify .library-item {
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar-spotify .library-item:hover {
+    background-color: #1a1a1a;
+}
+
+.sidebar-spotify .library-title {
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.sidebar-spotify .library-subtitle {
+    font-size: 12px;
+    color: #a7a7a7;
+}
+
+.sidebar-spotify .sidebar-filter {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    background-color: #232323;
+    border: none;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar-spotify .sidebar-filter:hover {
+    background-color: #2a2a2a;
+}
+
+.sidebar-spotify .sidebar-filter.active {
+    background-color: #fff;
+    color: #000;
+}
+
+.sidebar-spotify .create-section button {
+    color: #a7a7a7;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 0;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    transition: color 0.2s ease;
+}
+
+.sidebar-spotify .create-section button:hover {
+    color: #fff;
+}
+
+.sidebar-spotify .create-section button i {
+    margin-right: 8px;
+}
+
+/* Botones del header del sidebar */
+.sidebar-spotify .sidebar-header-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    color: #a7a7a7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.sidebar-spotify .sidebar-header-btn:hover {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.sidebar-spotify .sidebar-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.sidebar-spotify .sidebar-title:hover {
+    color: #fff;
+}
+
