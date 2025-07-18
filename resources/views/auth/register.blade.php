@@ -211,7 +211,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('registro') }}">
+    <form method="POST" action="{{ route('registro.submit') }}">
         @csrf
 
         {{-- Paso 1: Email --}}
@@ -338,8 +338,6 @@
 
     <p class="mt-4 text-white-50 text-center">¿Ya tienes una cuenta? <a href="{{ route('login') }}" class="small-link">Inicia sesión aquí.</a></p>
 </div>
-
-
 
 
 <script>

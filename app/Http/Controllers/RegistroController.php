@@ -45,7 +45,7 @@ class RegistroController extends Controller
 
         Auth::login($user);
 
-        return redirect('/inicio')->with('success', '¡Bienvenido/a, tu cuenta ha sido creada!');
+return redirect()->route('home');
     }
 
     private function mesANumero($mes)

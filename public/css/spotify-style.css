@@ -100,4 +100,105 @@ body {
             color: white;
         }
 
-        
+/* Estilos específicos para el sidebar de Spotify */
+.sidebar-spotify {
+    background-color: #000 !important;
+    border-right: 1px solid #282828;
+}
+
+.sidebar-spotify .library-item {
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar-spotify .library-item:hover {
+    background-color: #1a1a1a;
+}
+
+.sidebar-spotify .library-title {
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.sidebar-spotify .library-subtitle {
+    font-size: 12px;
+    color: #a7a7a7;
+}
+
+.sidebar-spotify .sidebar-filter {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    background-color: #232323;
+    border: none;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar-spotify .sidebar-filter:hover {
+    background-color: #2a2a2a;
+}
+
+.sidebar-spotify .sidebar-filter.active {
+    background-color: #fff;
+    color: #000;
+}
+
+.sidebar-spotify .create-section button {
+    color: #a7a7a7;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 0;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    transition: color 0.2s ease;
+}
+
+.sidebar-spotify .create-section button:hover {
+    color: #fff;
+}
+
+.sidebar-spotify .create-section button i {
+    margin-right: 8px;
+}
+
+/* Botones del header del sidebar */
+.sidebar-spotify .sidebar-header-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    color: #a7a7a7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.sidebar-spotify .sidebar-header-btn:hover {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.sidebar-spotify .sidebar-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.sidebar-spotify .sidebar-title:hover {
+    color: #fff;
+}
+

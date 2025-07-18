@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Cancion;
 use App\Models\Artista;
 
-class HomeController extends Controller
+class CancionController extends Controller
 {
     public function index()
     {
-        $canciones = Cancion::take(12)->get();   // Aquí cargas canciones para la vista
-        $artistas = Artista::take(8)->get();     // Y artistas también
+        $canciones = Cancion::take(12)->get();
+        $artistas   = Artista::take(8)->get();
 
         return view('inicio', compact('canciones', 'artistas'));
     }
