@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `).join('');
         });
 
-    // Colores por categoría (puedes personalizar)
+    // Colores por categoría 
     function getColor(id) {
         const colors = [
             '#e13300', '#1e3264', '#e8115b', '#148a08', '#bc5900', '#8d67ab', '#b49bc8', '#f59b23', '#477d95', '#dc148c', '#777777', '#537aa1', '#ff4632', '#509bf5', '#f037a5', '#c4d62d', '#f59b23', '#ba5d07', '#777777', '#e8115b'

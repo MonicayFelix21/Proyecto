@@ -13,9 +13,9 @@
     </div>
     <div class="d-flex align-items-center">
       <div class="mx-3" style="width:1px;height:24px;background:rgba(255,255,255,0.3)"></div>
-      <button class="btn p-0" style="width:30px;height:30px;">
+      <a href="{{ route('explorar') }}" class="btn p-0" style="width:30px;height:30px;" title="Explorar">
         <i class="bi bi-inbox text-white fs-5"></i>
-      </button>
+      </a>
     </div>
   </div>
 
@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const el = e.target.closest('.sugerencia');
     if (! el) return;
     const trackId = el.dataset.id;
-    // Aquí puedes redirigir o reproducir la pista
     console.log('Seleccionado track ID:', trackId);
     suger.style.display = 'none';
   });

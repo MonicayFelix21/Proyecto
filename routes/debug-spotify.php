@@ -24,12 +24,12 @@ Route::middleware('auth')->get('/debug-spotify', function () {
     
     echo "<h3>3. Estado del Token</h3>";
     if ($user->hasSpotifyConnected()) {
-        echo "✅ Spotify conectado<br>";
+        echo " Spotify conectado<br>";
         
         if ($user->isSpotifyTokenExpired()) {
-            echo "⚠️ Token expirado<br>";
+            echo " Token expirado<br>";
         } else {
-            echo "✅ Token válido<br>";
+            echo " Token válido<br>";
         }
         
         echo "<h3>4. Prueba directa con la API de Spotify</h3>";
@@ -51,19 +51,19 @@ Route::middleware('auth')->get('/debug-spotify', function () {
                 echo "Producto detectado: <strong>{$product}</strong><br>";
                 
                 if ($product === 'premium') {
-                    echo "🎉 <span style='color: green; font-weight: bold;'>DEBERÍA APARECER COMO PREMIUM</span><br>";
+                    echo " <span style='color: green; font-weight: bold;'>DEBERÍA APARECER COMO PREMIUM</span><br>";
                 } elseif ($product === 'free') {
-                    echo "ℹ️ <span style='color: orange; font-weight: bold;'>CUENTA GRATUITA DETECTADA</span><br>";
+                    echo "ℹ<span style='color: orange; font-weight: bold;'>CUENTA GRATUITA DETECTADA</span><br>";
                 } else {
-                    echo "⚠️ <span style='color: red; font-weight: bold;'>PRODUCTO DESCONOCIDO: {$product}</span><br>";
+                    echo " <span style='color: red; font-weight: bold;'>PRODUCTO DESCONOCIDO: {$product}</span><br>";
                 }
                 
             } else {
-                echo "❌ Error en la respuesta: " . $response->body() . "<br>";
+                echo " Error en la respuesta: " . $response->body() . "<br>";
             }
             
         } catch (Exception $e) {
-            echo "❌ Error al consultar Spotify: " . $e->getMessage() . "<br>";
+            echo " Error al consultar Spotify: " . $e->getMessage() . "<br>";
         }
         
         echo "<h3>6. Prueba con nuestro SpotifyClient</h3>";
@@ -77,11 +77,11 @@ Route::middleware('auth')->get('/debug-spotify', function () {
             echo "</pre>";
             
         } catch (Exception $e) {
-            echo "❌ Error con SpotifyClient: " . $e->getMessage() . "<br>";
+            echo " Error con SpotifyClient: " . $e->getMessage() . "<br>";
         }
         
     } else {
-        echo "❌ Spotify NO conectado<br>";
+        echo " Spotify NO conectado<br>";
         echo "Para conectar, ve a: <a href='/auth/spotify'>Conectar Spotify</a><br>";
     }
     

@@ -126,7 +126,7 @@
     @auth
     {{-- Versión colapsada (solo iconos) - Solo para usuarios autenticados --}}
     <div class="sidebar-collapsed d-none flex-column align-items-center py-3">
-        <div class="mb-3" title="Tu biblioteca">
+        <div class="mb-3" title="Expandir Tu biblioteca">
             <button class="btn btn-sm text-white-50 p-2 rounded-circle d-flex align-items-center justify-content-center"
                     style="width: 48px; height: 48px; background: none; border: none;"
                     onclick="toggleSidebar()">
@@ -152,11 +152,10 @@
             </div>
         </div>
         <div class="mb-3" title="Explorar">
-            <button class="btn btn-sm text-white-50 p-2 rounded-circle d-flex align-items-center justify-content-center"
-                    style="width: 48px; height: 48px; background: none; border: none;"
-                    onclick="window.open('https://open.spotify.com/genre', '_blank')">
+            <a href="{{ route('explorar') }}" class="btn btn-sm text-white-50 p-2 rounded-circle d-flex align-items-center justify-content-center"
+               style="width: 48px; height: 48px; background: none; border: none;">
                 <i class="bi bi-inbox fs-5"></i>
-            </button>
+            </a>
         </div>
         <div class="mb-3" title="Perfil">
             <div class="library-icon d-flex align-items-center justify-content-center rounded-circle bg-secondary fw-bold text-white"
